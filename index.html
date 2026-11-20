@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b63f6">
+  <meta name="description" content="BDK JITOX - Videos and Android apps in one place.">
+  <title>BDK JITOX</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-icon">BJ</span><span>BDK <b>JITOX</b></span></a>
+  <button id="adminToggle" class="outline-btn" type="button">Admin Login</button>
+</header>
+<main>
+  <section class="hero">
+    <div class="eyebrow">YOUR DIGITAL LIBRARY</div>
+    <h1>Watch &amp; <span>Download.</span></h1>
+    <p>ভিডিও দেখুন এবং Android অ্যাপের ডাউনলোড লিংক পান—এক জায়গায়।</p>
+    <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="ভিডিও বা অ্যাপ খুঁজুন..." aria-label="Search"></div>
+    <div class="hero-tags"><span>▶ Videos</span><span>▣ Android Apps</span><span>↓ Easy Access</span></div>
+  </section>
+
+  <section id="adminPanel" class="admin-panel hidden">
+    <div class="section-head"><div><span class="eyebrow">PRIVATE AREA</span><h2>Admin Dashboard</h2></div><button id="logoutBtn" class="outline-btn hidden" type="button">Logout</button></div>
+    <div id="loginBox" class="panel-card">
+      <p class="muted">শুধু অনুমোদিত Admin লগইন করে লিংক যোগ বা মুছতে পারবেন।</p>
+      <form id="loginForm" class="stack">
+        <label>Admin Email<input id="email" type="email" autocomplete="username" required placeholder="আপনার admin email"></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" required placeholder="Password"></label>
+        <button class="primary-btn" type="submit">Login</button>
+      </form>
+      <p id="loginMessage" class="message" role="status"></p>
+    </div>
+    <div id="uploadBox" class="panel-card hidden">
+      <h3>নতুন ভিডিও / APK লিংক যোগ করুন</h3>
+      <form id="uploadForm" class="stack">
+        <label>শিরোনাম<input id="fileTitle" required maxlength="80" placeholder="যেমন: আমার নতুন ভিডিও"></label>
+        <label>ধরন<select id="fileCategory"><option value="video">Video</option><option value="apk">APK App</option></select></label>
+        <label>লিংক<input id="fileLink" type="url" required placeholder="https://..." inputmode="url"></label>
+        <label>Thumbnail URL (ঐচ্ছিক)<input id="fileThumbnail" type="url" placeholder="https://..." inputmode="url"></label>
+        <label>ছোট বিবরণ<textarea id="fileDescription" rows="2" maxlength="300" placeholder="ফাইল সম্পর্কে কিছু লিখুন"></textarea></label>
+        <div class="hint">ভিডিওর জন্য YouTube লিংক এবং APK-এর জন্য GitHub Releases-এর সরাসরি APK asset link ব্যবহার করুন। এখানে কোনো ফাইল আপলোড হয় না; শুধু লিংক সংরক্ষিত হয়।</div>
+        <button class="primary-btn" type="submit">লিংক যোগ করুন</button>
+        <p id="uploadMessage" class="message" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="library">
+    <div class="section-head"><div><span class="eyebrow">THE LIBRARY</span><h2>Latest Uploads</h2></div>
+      <div class="filters">
+        <button class="filter active" data-filter="all" type="button">All</button>
+        <button class="filter" data-filter="video" type="button">Videos</button>
+        <button class="filter" data-filter="apk" type="button">APK Apps</button>
+      </div>
+    </div>
+    <div id="fileGrid" class="file-grid"><div class="empty-state">তালিকা লোড হচ্ছে...</div></div>
+  </section>
+</main>
+<footer><div class="brand"><span class="brand-icon">BJ</span><span>BDK <b>JITOX</b></span></div><p>শুধু নিরাপদ ও অনুমোদিত লিংক শেয়ার করুন।</p><small>© <span id="year"></span> BDK JITOX</small></footer>
+<div id="toast" class="toast" role="status"></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
